@@ -1,0 +1,15 @@
+<% @listings.each do |listing| %>
+  <div>
+    <%= listing.title %>
+    <%= listing.description %>
+    <%= listing.breed.name %>
+    <%= listing.sex %>
+    <%= listing.price %>
+    <%= listing.deposit %>
+    <%= listing.city %>
+    <%= listing.state %>
+    <%= listing.date_of_birth %>
+    <%= listing.diet %>
+    <%= link_to "Edit", edit_listing_path( listing ) %>
+  </div>
+<% end %>
