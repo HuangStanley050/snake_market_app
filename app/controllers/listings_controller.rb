@@ -13,6 +13,10 @@ class ListingsController < ApplicationController
   end
 
   def create
+    listing_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet)
+    @listing = Listing.new(listing_params)
+    @listing.save
+    redirect_to @listing
     # finish logic for creating a record
   end
 
