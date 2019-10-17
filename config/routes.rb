@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   get '/breeds/new', to: 'breeds#new'
   get '/breeds/:id', to: 'breeds#show'
+  get '/breeds', to: 'breeds#index'
+  post '/breeds', to: 'breeds#create'
   get '*path', to: 'pages#not_found'
 end

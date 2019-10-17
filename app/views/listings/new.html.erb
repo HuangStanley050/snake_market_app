@@ -34,7 +34,11 @@
   </div>
   <div>
     <%= form.label :sex %>
-    <%= select_tag :sexes, options_for_select(Listing.sexes)%>
+    <%= form.select :sex, options_for_select(Listing.sexes.keys)%>
+  </div>
+  <div>
+    <%= form.label :breed_id%>
+    <%= form.select :breed_id, options_for_select(Breed.all.collect{|u| [u.name, u.id]})%>
   </div>
   <div>
     <%= form.submit %>
