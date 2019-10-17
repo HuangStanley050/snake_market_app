@@ -33,6 +33,10 @@
     <%= form.text_field :diet %>
   </div>
   <div>
+    <%= form.label :sex %>
+    <%= select_tag :sexes, options_for_select(Listing.sexes)%>
+  </div>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
