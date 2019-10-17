@@ -27,7 +27,7 @@ class ListingsController < ApplicationController
   def update
     # finsih logic for updating the record
     listing_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet)
-    @listing = Listing.new(listing_params)
+    # @listing = Listing.new(listing_params)
 
     @listing.update(listing_params)
     redirect_to @listing
@@ -35,6 +35,8 @@ class ListingsController < ApplicationController
 
   def destroy
     # finish logic for deleting the record
+    @listing.destroy
+    redirect_to listings_path
   end
 
   private
