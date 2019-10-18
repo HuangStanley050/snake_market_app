@@ -46,5 +46,10 @@
 <% if @listing.errors.any? %>
   <div id="error_explanation">
     <h1>Error occured!!</h1>
+    <% listing.errors.messages.each do |field,error| %>
+      <% if error.length != 0 %>
+        <h3 style="color:red;"><%= field %> <%= error[0] %></h3>
+      <% end %>
+    <% end %>
   </div>
 <% end %>

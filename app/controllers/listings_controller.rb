@@ -21,8 +21,8 @@ class ListingsController < ApplicationController
       redirect_to @listing
     else
       # byebug
-      puts 'error occured'
-      puts @listing.errors.messages
+      # puts 'error occured'
+      # puts @listing.errors.messages
       render 'new'
     end
     # redirect_to @listing
