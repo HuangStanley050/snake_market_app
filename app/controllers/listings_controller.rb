@@ -13,12 +13,19 @@ class ListingsController < ApplicationController
   end
 
   def create
-    # byebug
     listing_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet)
     @listing = Listing.new(listing_params)
 
-    @listing.save
-    redirect_to @listing
+    if @listing.save
+      # byebug
+      redirect_to @listing
+    else
+      # byebug
+      puts 'error occured'
+      puts @listing.errors.messages
+      render 'new'
+    end
+    # redirect_to @listing
     # finish logic for creating a record
   end
 

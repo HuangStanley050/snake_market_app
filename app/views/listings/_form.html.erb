@@ -43,3 +43,8 @@
     <%= form.submit %>
   </div>
 <% end %>
+<% if @listing.errors.any? %>
+  <div id="error_explanation">
+    <h1>Error occured!!</h1>
+  </div>
+<% end %>
