@@ -52,4 +52,8 @@ class ListingsController < ApplicationController
     id = params[:id]
     @listing = Listing.find(id)
   end
+
+  def listing_params
+    params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet, :picture)
+  end
 end

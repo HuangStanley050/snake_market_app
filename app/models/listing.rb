@@ -7,4 +7,5 @@ class Listing < ApplicationRecord
 
   # validates :state, format: { with: /[1-9][0-9][0-9][0-9]/, message: 'only allow 4 numbers' }
   validates :state, inclusion: { in: %w[VIC NSW WA TAS NT ACT QLD SA], message: '%{value} is not a valid state' }
+  has_one_attached :picture
 end
