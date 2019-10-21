@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ListingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_listing, only: %i[show edit update destroy]
   def index
     @listings = Listing.all
@@ -18,7 +19,8 @@ class ListingsController < ApplicationController
                              :title, :description, :breed_id, :sex, :price, :deposit, :city, :state,
                              :date_of_birth, :diet, :picture
                            )
-    @listing = Listing.new(listing_params)
+    # @listing = Listing.new(listing_params)
+    @listing = current_user.listings.create(listing_params)
 
     if @listing.save
       # byebug
