@@ -13,7 +13,11 @@ class ListingsController < ApplicationController
   end
 
   def create
-    listing_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet)
+    listing_params = params.require(:listing)
+                           .permit(
+                             :title, :description, :breed_id, :sex, :price, :deposit, :city, :state,
+                             :date_of_birth, :diet, :picture
+                           )
     @listing = Listing.new(listing_params)
 
     if @listing.save
@@ -33,7 +37,7 @@ class ListingsController < ApplicationController
 
   def update
     # finsih logic for updating the record
-    listing_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet)
+    listing_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet, :picture)
     # @listing = Listing.new(listing_params)
 
     @listing.update(listing_params)

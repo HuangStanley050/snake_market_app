@@ -1,5 +1,8 @@
 <h1>Show Page for One Listing</h1>
 <p>
+  <%= image_tag @listing.picture if @listing.picture.attached? %>
+</p>
+<p>
   <strong>Title:</strong>
   <%= @listing.title%>
 </p>
