@@ -2,10 +2,10 @@
 
 class ListingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_listing, only: %i[show edit update destroy]
+  before_action :set_listing, only: %i[show]
   before_action :set_user_listing, only: %i[edit update destroy]
   def index
-    @listings = Listing.all
+    @listings = current_user.listings
   end
 
   def show; end
