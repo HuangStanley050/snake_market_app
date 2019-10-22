@@ -3,6 +3,7 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_listing, only: %i[show edit update destroy]
+  before_action :set_user_listing, only: %i[edit update destroy]
   def index
     @listings = Listing.all
   end
@@ -42,8 +43,11 @@ class ListingsController < ApplicationController
     listing_params = params.require(:listing).permit(:title, :description, :breed_id, :sex, :price, :deposit, :city, :state, :date_of_birth, :diet, :picture)
     # @listing = Listing.new(listing_params)
 
-    @listing.update(listing_params)
-    redirect_to @listing
+    if @listing.update(listing_params)
+      redirect_to @listing
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -57,6 +61,12 @@ class ListingsController < ApplicationController
   def set_listing
     id = params[:id]
     @listing = Listing.find(id)
+  end
+
+  def set_user_listing
+    id = params[:id]
+    @listing = current_user.listings.find_by_id(id)
+    redirect_to listings_path if @listing.nil?
   end
 
   def listing_params

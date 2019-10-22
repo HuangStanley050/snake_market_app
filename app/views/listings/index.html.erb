@@ -10,7 +10,7 @@
     <%= listing.state %>
     <%= listing.date_of_birth %>
     <%= listing.diet %>
-    <%= link_to "Edit", edit_listing_path( listing ) %>
-    <%= link_to "Destroy", listing_path(listing), method: :delete, data: {confirm:"are you sure?"} %>
+    <%= link_to "Edit", edit_listing_path( listing ) if current_user.id == listing.user_id %>
+    <%= link_to "Destroy", listing_path(listing), method: :delete, data: {confirm:"are you sure?"} if current_user.id == listing.user_id %>
   </div>
 <% end %>
