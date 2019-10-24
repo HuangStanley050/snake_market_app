@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   patch '/listings/:id', to: 'listings#update'
   delete '/listings/:id', to: 'listings#destroy'
   get '/listings/:id/edit', to: 'listings#edit', as: 'edit_listing'
+
   get '/payments/success', to: 'payments#success'
+  post '/payments/webhook', to: 'payments#webhook'
+
   get '/breeds/new', to: 'breeds#new'
   get '/breeds/:id', to: 'breeds#show'
   get '/breeds', to: 'breeds#index'
